@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
@@ -20,6 +21,23 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'))
 app.use(express.urlencoded({extended:true}))
 app.use(express.json());
+
+app.use(require('express-session')({
+    secret: process.env.APP_SECRET,
+    resave: true,
+    saveUninitialized: false
+  }))
+  
+  const { ExpressOIDC } = require('@okta/oidc-middleware')
+  const oidc = new ExpressOIDC({
+    issuer: `${process.env.OKTA_ORG_URL}/oauth2/default`,
+    client_id: process.env.OKTA_CLIENT_ID,
+    client_secret: process.env.OKTA_CLIENT_SECRET,
+    redirect_uri: `${process.env.HOST_URL}/authorization-code/callback`,
+    scope: 'openid profile'
+  })
+  
+  app.use(oidc.router)
 
 
 
