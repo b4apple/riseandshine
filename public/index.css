@@ -1,0 +1,158 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.tagline{
+    /* text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6); */
+    margin-left: 21px;
+    /* color: whitesmoke; */
+    margin-top: -11px;
+    color: black;
+}
+
+@font-face{
+    font-family: cocopro;
+    src:url(media/cocoProSe.ttf);
+}
+
+.navbar-nav li a{
+    float: right;
+    color: black!important;
+
+}
+
+.logo{
+    /* color: whitesmoke; */
+    color: black;
+    font-family: cocopro;
+    font-size: 40px;
+    cursor: pointer;
+    font-weight: 900;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+    margin-left: 40px;
+    margin-top: 10px;
+}
+
+.navbar-toggler{
+    border: none!important;
+    outline: none!important;
+}
+
+/*--------------Welcome Text-----------------*/
+.welcome{
+    padding: 50px 100px;
+    margin-top: -140px;
+    background-color: #fff;
+    box-shadow: 0 0 20px 7px rgba(0,0,0,0.2);
+}
+.welcome h1{
+    color: #333;
+}
+
+#about
+{
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+#about col-md-6
+{
+    padding: 20px 10px;
+}
+
+#about h3
+{
+    margin: 20px auto;
+}
+
+#project360
+{
+    margin-top: -150px;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*          <div class="info">
+            <h1 class="h1AboutUs">About<br>Edunext</h1>
+            <h2 class=h2AboutUs">Edunext strives to offer<br> world-class facilities in <br>education through online<br>
+              communities, support<br> and much more.</h2>
+          </div>
+          
+          .h1AboutUs{
+    margin: auto;
+    width: 60%;
+    padding-left: 10px;
+}
+
+.h2AboutUs{
+    margin: auto;
+    width: 60%;
+    padding-left: 10px;
+}
+
+
+
+          */

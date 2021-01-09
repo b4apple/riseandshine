@@ -1,0 +1,55 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.tagline{
+    /* text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6); */
+    margin-left: 21px;
+    /* color: whitesmoke; */
+    margin-top: -11px;
+    color: black;
+}
+
+
+@font-face{
+    font-family: cocopro;
+    src:url(media/cocoProSe.ttf);
+}
+
+/* #header
+{
+    background-image: url(media/img6.jpg);
+    height: 80vh;
+    background-size: cover;
+    background-position: center;
+} */
+
+.navbar-nav li a{
+    float: right;
+    color: black!important;
+
+}
+
+.logo{
+    /* color: whitesmoke; */
+    color: black;
+    font-family: cocopro;
+    font-size: 40px;
+    cursor: pointer;
+    font-weight: 900;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+    margin-left: 40px;
+    margin-top: 10px;
+}
+
+
+.navbar-toggler{
+    border: none!important;
+    outline: none!important;
+}
+
+
+#ques
+{
+    margin-left: 65px;
+}
