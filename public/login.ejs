@@ -13,20 +13,25 @@
 </head>
 
 <body class="text-center">
-    <form class="form-signin">
+    <form action="/login" class="form-signin">
+        <% if (status == 'fail') { %>
+             <% document.getElementById('error').innerHTML = '<font color = "red">Login has failed. Retry</font>'} %>
+        <% else if (status == 'ld') { %>
+            <% localStorage = window.LocalStorage;%>
+            <% localStorage.setItem('rasuname', name); %>
+            <% window.location.href = "/redirect"; } %> 
         <!-- <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> -->
         <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
         <label for="inputEmail" class="sr-only">Username</label>
-        <input type="text" id="inputEmail" class="form-control" placeholder="Username" required autofocus>
+        <input type="text" id="name" class="form-control" placeholder="Username" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <input type="password" id="pwd" class="form-control" placeholder="Password" required>
+        <p id="error"></p>
         <button class="btn btn-lg btn-primary btn-block" type="submit" id="signin">Sign in</button>
         <p class="mt-5 mb-3 text-muted"><a href="/signup" class="nav-link disabled">Create an Account</a></p>
     </form>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="login.js"></script>
 </body>
-
 </html>
