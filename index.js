@@ -1,12 +1,13 @@
 const express = require('express');
 const path = require('path');
-const bodyparser = require('body-parser')
+const bodyParser = require('body-parser');
 const nedb = require('nedb');
+const multer = require('multer');
 const { request } = require('http');
 const { response } = require('express');
 
 const userdb = new nedb({ filename: 'db.json' });
-
+const upload = multer();
 userdb.loadDatabase();
 
 const app = express();
@@ -15,19 +16,56 @@ const PORT = 3000;
 
 app.set('views', path.join(__dirname, 'public'));
 app.set('view engine', 'ejs');
-app.use(bodyparser.json());
+
+app.use(express.static(__dirname + '/public'))
+app.use(express.urlencoded({extended:true}))
+app.use(express.json());
+
 
 
 app.get('/', (request, response) => {
-    response.render('index');
+    response.render('index', {status:'fresh'});
 });
+
+app.get('/signup', (request, response) => {
+    response.render('signup', {status: 'fresh'});
+});
+
+app.get('/login', (request, response) => {
+    response.render('login', {status: 'fresh'});
+});
+
+app.get('/questions', (request, response) => {
+    response.render('questions');
+});
+
+app.get('/redirect', (request, response) => {
+    response.render('index', {status: 'ld'});
+});
+
 
 app.post('/login', (request, response) => {
-    
+    const res = userdb.find({name: request.body.name, pwd: request.body.pwd}, (err, res) => {
+        if(err || res.length == 0){
+            response.render('login', {status:'fail'});
+        }
+        else {
+            response.render('login', {status:'ld', name: request.body.name});
+        }
+    });
 });
 
-app.post('/signup', (request, response) => {
-    userdb.insert({ name: request.params.name, password: request.params.password });
+app.post('/signup', upload.none(), (request, response) => {
+    const data = { name: request.body.name, pwd: request.body.pwd };
+    userdb.find(data, (err, res) => {
+        if(err | res.length == 0){
+            response.render('signup', {status: 'fail' });
+        }
+        else {
+            userdb.insert(data);
+            response.render('signup', {status: 'ld', name: data.name});
+        }
+    });
 });
 
 
